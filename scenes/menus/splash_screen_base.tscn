@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyb3dm4ryvjll"]
+
+[ext_resource type="Script" uid="uid://nggks0ncbl2y" path="res://scenes/menus/splash_screen_base.gd" id="1_crpne"]
+[ext_resource type="Texture2D" uid="uid://bhy3qdksepmf8" path="res://assets/branding/Potato Sack Logo V1_White.svg" id="2_gh2p5"]
+
+[node name="SplashScreenBase" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+color = Color(0.25098, 0.25098, 0.25098, 1)
+script = ExtResource("1_crpne")
+target_scene = "res://scenes/menus/gwj_splash.tscn"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gh2p5")
+expand_mode = 3
+stretch_mode = 3
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

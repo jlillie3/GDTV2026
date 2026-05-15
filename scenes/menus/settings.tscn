@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://buu6gdiuaom0u"]
+
+[ext_resource type="Script" uid="uid://mj0buk5lc0sp" path="res://scenes/menus/settings.gd" id="1_416mn"]
+[ext_resource type="PackedScene" uid="uid://vodh0ukr41ul" path="res://toolkit/nodes/ui/volume_slider.tscn" id="3_0bw2w"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_6ya8f"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_bxdmm"]
+events = [SubResource("InputEventAction_6ya8f")]
+
+[node name="Settings" type="ColorRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_416mn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 8.0
+offset_right = 31.0
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -51.0
+offset_right = 86.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" parent="VBoxContainer" instance=ExtResource("3_0bw2w")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="AudioStreamPlayer" parent="VBoxContainer/MusicSlider" index="0"]
+bus = &"Music"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SFXSlider" parent="VBoxContainer" instance=ExtResource("3_0bw2w")]
+layout_mode = 2
+bus_name = "Sfx"
+
+[node name="AudioStreamPlayer" parent="VBoxContainer/SFXSlider" index="0"]
+bus = &"Sfx"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(91, 26)
+layout_mode = 0
+offset_left = 225.0
+offset_top = 143.0
+offset_right = 316.0
+offset_bottom = 174.0
+shortcut = SubResource("Shortcut_bxdmm")
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="VBoxContainer/MusicSlider"]
+[editable path="VBoxContainer/SFXSlider"]

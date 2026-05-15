@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqb7pvgqkm0iq"]
+
+[ext_resource type="Script" uid="uid://ckdfwp0ysi56w" path="res://toolkit/nodes/effects/serial_effect.gd" id="2_k2mv1"]
+
+[node name="SerialEffect" type="Node2D"]
+script = ExtResource("2_k2mv1")

@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://dplmxyggw407"]
+
+[ext_resource type="Script" uid="uid://cyfuduihoqrb5" path="res://test.gd" id="1_n238o"]
+[ext_resource type="Texture2D" uid="uid://k3rtu0q8oe06" path="res://test_sprite.png" id="2_15fkj"]
+[ext_resource type="PackedScene" uid="uid://rxuleixvd3ab" path="res://toolkit/nodes/ui/mouseover_control_sfx.tscn" id="3_f7ynm"]
+[ext_resource type="AudioStream" uid="uid://b8w1ia8oenck1" path="res://rollover2.wav" id="4_ym2kw"]
+[ext_resource type="Script" uid="uid://b0lbvax3sqk4l" path="res://toolkit/nodes/ui/experimental/debounce_button.gd" id="5_q4w15"]
+
+[node name="TestEffects" type="Node2D"]
+script = ExtResource("1_n238o")
+
+[node name="Squash" type="Sprite2D" parent="."]
+position = Vector2(-41, 0)
+texture = ExtResource("2_15fkj")
+
+[node name="Stretch" type="Sprite2D" parent="."]
+texture = ExtResource("2_15fkj")
+
+[node name="SquashThenStretch" type="Sprite2D" parent="."]
+position = Vector2(41, 0)
+texture = ExtResource("2_15fkj")
+
+[node name="DamageEffect" type="Sprite2D" parent="."]
+position = Vector2(82, 0)
+texture = ExtResource("2_15fkj")
+
+[node name="RoundHit" type="Sprite2D" parent="."]
+position = Vector2(-41, 38)
+texture = ExtResource("2_15fkj")
+
+[node name="DamageCombo" type="Sprite2D" parent="."]
+position = Vector2(-1, 38)
+texture = ExtResource("2_15fkj")
+
+[node name="HitStop" type="Sprite2D" parent="."]
+position = Vector2(41, 38)
+texture = ExtResource("2_15fkj")
+
+[node name="Shake" type="Sprite2D" parent="."]
+position = Vector2(82, 38)
+texture = ExtResource("2_15fkj")
+
+[node name="ParticlesTest" type="Node2D" parent="."]
+position = Vector2(43, -55)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Root" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Root"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -243.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="RunEffects" type="Button" parent="CanvasLayer/Root/HBoxContainer"]
+layout_mode = 2
+text = "Run Effects"
+
+[node name="MouseoverControlSfx" parent="CanvasLayer/Root/HBoxContainer/RunEffects" node_paths=PackedStringArray("Target") instance=ExtResource("3_f7ynm")]
+SfxStream = ExtResource("4_ym2kw")
+Target = NodePath("..")
+
+[node name="DebounceButton" type="Button" parent="CanvasLayer/Root/HBoxContainer"]
+layout_mode = 2
+text = "Debounce Button"
+script = ExtResource("5_q4w15")
+debounce_timeout = 1.0
+should_disable = true
+metadata/_custom_type_script = "uid://b0lbvax3sqk4l"
+
+[node name="TabContainer" type="PanelContainer" parent="CanvasLayer/Root"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(81, 49)
+ignore_rotation = false
+
+[connection signal="pressed" from="CanvasLayer/Root/HBoxContainer/RunEffects" to="." method="_on_run_effects_pressed"]

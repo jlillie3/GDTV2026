@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dx5ifblmlvbjy"]
+
+[ext_resource type="Script" uid="uid://bsnh2bvjhcpna" path="res://scenes/menus/main_menu.gd" id="1_ovrgc"]
+[ext_resource type="PackedScene" uid="uid://c5sh6175b7qfi" path="res://toolkit/nodes/ui/to_scene_button.tscn" id="2_2o76q"]
+
+[node name="MainMenu" type="ColorRect" unique_id=2043946030]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ovrgc")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1890714092]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=666150580]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -33.0
+offset_right = 46.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameButton" parent="VBoxContainer" unique_id=1723909062 instance=ExtResource("2_2o76q")]
+layout_mode = 2
+text = "New Game
+"
+start_focused = true
+
+[node name="Settings" parent="VBoxContainer" unique_id=1689574061 instance=ExtResource("2_2o76q")]
+layout_mode = 2
+text = "Settings"
+target_scene = "res://scenes/menus/settings.tscn"
+target_scene_to_stack = true

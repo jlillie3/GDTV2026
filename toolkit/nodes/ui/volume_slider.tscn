@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://vodh0ukr41ul"]
+
+[ext_resource type="Script" uid="uid://ekebbtspo2ae" path="res://toolkit/nodes/ui/volume_slider.gd" id="1_t7xiw"]
+
+[node name="VolumeSlider" type="HSlider" unique_id=2106092567]
+offset_right = 8.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.001
+value = 0.8
+script = ExtResource("1_t7xiw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1962720257]
+
+[connection signal="drag_ended" from="." to="." method="_on_drag_ended"]
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

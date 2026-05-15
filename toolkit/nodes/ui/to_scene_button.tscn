@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5sh6175b7qfi"]
+
+[ext_resource type="Script" uid="uid://61rwno2m71c3" path="res://toolkit/nodes/ui/to_scene_button.gd" id="1_d5rsf"]
+
+[node name="ToSceneButton" type="Button"]
+text = "Button"
+script = ExtResource("1_d5rsf")
