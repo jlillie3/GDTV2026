@@ -2,6 +2,7 @@
 # meta-description: A new state usable with FiniteStateMachine
 extends State
 
+signal finished
 
 func _enter_state() -> void:
 	pass
@@ -11,5 +12,3 @@ func _run(_delta) -> void:
 	
 func _exit_state() -> void:
 	pass
-
-
